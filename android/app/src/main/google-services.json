@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1040242607294",
+    "project_id": "creative-fabrica-assessment",
+    "storage_bucket": "creative-fabrica-assessment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040242607294:android:886aaa33c17c78575f4aef",
+        "android_client_info": {
+          "package_name": "com.shakib.creativefabrica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040242607294-hhr54pdil8hnthlme1ht1r5oi98dpiq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOSEVYwOH_4jQg977FftGwVzOdk5P010A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040242607294-hhr54pdil8hnthlme1ht1r5oi98dpiq2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
