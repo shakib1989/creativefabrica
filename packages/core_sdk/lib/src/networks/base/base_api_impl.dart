@@ -2,21 +2,20 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:core_sdk/domain/auth_get_it.dart';
-import 'package:core_sdk/domain/repositories/auth_repository.dart';
+import 'package:core_sdk/data/network/default_imports.dart';
 import 'package:dartz/dartz.dart';
-import 'package:http/http.dart';
-import 'base_json.dart';
+import 'package:dio/dio.dart';
+
 import 'exports.dart';
 
 enum ApiRequestType { get, post, put, patch, delete }
 
 abstract class BaseApiImpl<Request extends BaseJson,
     ApiResponse extends BaseJson> {
-  static Client? _client;
+  static Dio? _client;
 
-  static Client get client {
-    _client ??= Client();
+  static Dio get client {
+    _client ??= Dio();
     return _client!;
   }
 
@@ -33,28 +32,13 @@ abstract class BaseApiImpl<Request extends BaseJson,
   });
 
   Map<String, String> get defaultHeaders {
-    final appAuth = AuthSdkGetIt.shared.get<AuthRepository>().getAppAuthModel();
-
-    final uri = Uri.parse(baseUrl);
-
-    final headers = {
-      'cache-control': 'no-cache',
-      'content-type': 'application/json; charset=utf-8',
-      'device-type': appAuth.device.deviceType,
-      'host':  uri.host,
-    };
-    if (appAuth.token.isNotEmpty) {
-      headers['token'] = appAuth.token;
-    }
-    if (appAuth.device.fingerprint.isNotEmpty) {
-      headers['fingerprint'] = appAuth.device.fingerprint;
-    }
+    final headers = <String, String>{};
     return headers;
   }
 
-  Future<Either<BaseApiResponse, ApiResponse>> mock(Request request);
+  Future<Either<FailureModel, ApiResponse>> mock(Request request);
 
-  Future<Either<BaseApiResponse, ApiResponse>> apiCall(
+  Future<Either<FailureModel, ApiResponse>> apiCall(
     Request request, {
     Map<String, String> headers = const {},
     Map<String, String> pathParams = const {},
@@ -90,52 +74,46 @@ abstract class BaseApiImpl<Request extends BaseJson,
       );
     }
 
-    return Left(BaseApiResponse.genericFailure());
+    return Left(FailureModel.apiFailure());
   }
 
-  Future<Either<BaseApiResponse, ApiResponse>> _makeGetCall({
+  Future<Either<FailureModel, ApiResponse>> _makeGetCall({
     required Uri url,
     required Map<String, String> headers,
     required Request request,
   }) async {
-    final newUrl = (request.toJson().keys.isEmpty)
-        ? url
-        : url.replace(queryParameters: request.toJson());
-    log("newUrl : $newUrl");
     try {
       final response = await client.get(
-        newUrl,
-        headers: headers,
-      );
-      print("\n\n\nresponse code = ${response.statusCode}");
-      final json = jsonDecode(response.body);
-      log("\n\n\n${json.toString()}");
-      if (isSuccess(response)) {
-        return Right(apiResponseFromJson(jsonDecode(response.body)));
-      }
-      return Left(BaseApiResponse.fromJson(jsonDecode(response.body)));
-    } on TimeoutException catch (_) {
-      return Left(
-        BaseApiResponse(
-          statusCode: -1,
-          meta: BaseMetaData(
-            message: 'Server Timeout',
-          ),
+        url.toString(),
+        queryParameters: request.toJson(),
+        options: Options(
+          headers: headers,
         ),
       );
+      print("\n\n\nresponse code = ${response.statusCode}");
+      final json = jsonDecode(response.data);
+      log("\n\n\n${json.toString()}");
+      if (isSuccess(response)) {
+        return Right(apiResponseFromJson(response.data));
+      }
+
+      return Left(FailureModel.apiFailure());
+    } on TimeoutException catch (_) {
+      print("<<<>>> TimeoutException");
+      return Left(FailureModel(
+        message: 'Server Timeout. Please try again later',
+      ));
     } catch (e) {
+      print("<<<>>> Exception ${e.toString()}");
       return Left(
-        BaseApiResponse(
-          statusCode: -1,
-          meta: BaseMetaData(
-            message: e.toString(),
-          ),
+        FailureModel(
+          message: e.toString(),
         ),
       );
     }
   }
 
-  Future<Either<BaseApiResponse, ApiResponse>> _makePostCall({
+  Future<Either<FailureModel, ApiResponse>> _makePostCall({
     required Uri url,
     required Map<String, String> headers,
     required Request request,
@@ -144,45 +122,42 @@ abstract class BaseApiImpl<Request extends BaseJson,
       final body = jsonEncode(request);
       final response = await client
           .post(
-            url,
-            body: body,
-            headers: headers,
+            url.toString(),
+            data: body,
+            options: Options(
+              headers: headers,
+            ),
           )
           .timeout(const Duration(seconds: 130));
 
       print("\n\n\n<<<>>> response code = ${response.statusCode}");
       log("\n\n\n<<<>>> body :");
-      log("\n\n\n${response.body}");
-      final json = jsonDecode(response.body);
+      log("\n\n\n${jsonEncode(response.data)}");
+      final json = response.data;
       log("\n\n\n${json.toString()}");
       if (isSuccess(response)) {
         return Right(apiResponseFromJson(json));
       }
 
-      return Left(BaseApiResponse.fromJson(json));
+      return Left(FailureModel.apiFailure());
     } on TimeoutException catch (_) {
       print("<<<>>> TimeoutException");
-      return Left(BaseApiResponse(
-        statusCode: -1,
-        meta: BaseMetaData(
-          message: 'Server Timeout',
-        ),
+      return Left(FailureModel(
+        message: 'Server Timeout. Please try again later',
       ));
     } catch (e) {
       print("<<<>>> Exception ${e.toString()}");
       return Left(
-        BaseApiResponse(
-          statusCode: -1,
-          meta: BaseMetaData(
-            message: e.toString(),
-          ),
+        FailureModel(
+          message: e.toString(),
         ),
       );
     }
   }
 
   bool isSuccess(Response response) {
-    if (200 <= response.statusCode && response.statusCode < 300) {
+    final statusCode = response.statusCode ?? 0;
+    if (200 <= statusCode && statusCode < 300) {
       return true;
     }
     return false;

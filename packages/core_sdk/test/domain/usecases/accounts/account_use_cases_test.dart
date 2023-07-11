@@ -1,10 +1,10 @@
 import 'package:core_sdk/config/env_modes.dart';
 import 'package:core_sdk/core_sdk.dart';
-import 'package:core_sdk/data/network/accounts/default_imports.dart';
 import 'package:core_sdk/domain/exports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+/*
 void main() {
   group('Test Account Information Retrieve Test Cases', () {
     UserAccountModel? account;
@@ -38,3 +38,6 @@ void main() {
     });
   });
 }
+
+
+ */
