@@ -19,7 +19,7 @@ class InitStatusViewer extends StatelessWidget {
       bloc: InitManagerCubit.shared,
       listener: (context, state) {
         if (state.phase == InitPhase.completed) {
-          Future.delayed(const Duration(seconds: 3), () {
+          Future.delayed(const Duration(milliseconds: 2000), () {
             DashboardScreen.navigate(context, replace: true);
           });
         }
