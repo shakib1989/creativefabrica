@@ -37,3 +37,7 @@ Build the APK via the command :
 flutter build apk -t lib/env/env_development.dart --debug 
 ```
 Change --debug to --release for release build
+
+
+## Dist Apk
+Apks can be found in dist folder
