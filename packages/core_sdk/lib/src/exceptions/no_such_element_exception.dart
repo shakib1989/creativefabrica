@@ -1,3 +1,1 @@
-
-
-class NoSuchElementException implements Exception{}
+class NoSuchElementException implements Exception {}

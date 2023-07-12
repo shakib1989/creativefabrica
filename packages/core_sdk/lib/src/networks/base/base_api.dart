@@ -1,7 +1,1 @@
-
-
-
-
-abstract class BaseApi<Response> {
-
-}
+abstract class BaseApi<Response> {}

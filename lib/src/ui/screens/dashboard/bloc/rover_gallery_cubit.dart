@@ -1,10 +1,11 @@
-import 'package:core_sdk/exports.dart';
 import 'package:core_sdk/domain/exports.dart';
+import 'package:core_sdk/exports.dart';
 import 'package:creativefabrica/src/utils/internet_utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'rover_gallery_cubit.freezed.dart';
+
 part 'rover_gallery_state.dart';
 
 class RoverGalleryCubit extends Cubit<RoverGalleryState> {
@@ -62,7 +63,6 @@ class RoverGalleryCubit extends Cubit<RoverGalleryState> {
       ));
     });
   }
-
 
   Future<void> resetLocal() async {
     if (state.phase == RoverGalleryPhase.loading) return;

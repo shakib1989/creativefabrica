@@ -1,5 +1,3 @@
-
-
 abstract class DbConstants {
-  static const int singletonId  = 1;
+  static const int singletonId = 1;
 }

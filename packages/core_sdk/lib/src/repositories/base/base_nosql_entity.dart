@@ -1,5 +1,3 @@
-
-
 import 'package:isar/isar.dart';
 
 class BaseNoSqlEntity {

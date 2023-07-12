@@ -1,5 +1,3 @@
-
-
 import 'package:core_sdk/data/network/default_imports.dart';
 import 'package:core_sdk/src/repositories/base/exports.dart';
 import 'package:injectable/injectable.dart';
@@ -24,14 +22,14 @@ class RoverPhotoDao
 
   @override
   Optional<String> convertToModel(RoverPhotoEntity? entity) {
-
     return Optional.of(entity.toString());
   }
 
   @override
   QueryBuilder<RoverPhotoEntity, RoverPhotoEntity, QAfterWhereClause> idEqual(
-      QueryBuilder<RoverPhotoEntity, RoverPhotoEntity, QWhereClause> queryBuilder,
-      String value) =>
+          QueryBuilder<RoverPhotoEntity, RoverPhotoEntity, QWhereClause>
+              queryBuilder,
+          String value) =>
       queryBuilder.idEqualTo(value);
 
   @override

@@ -5,6 +5,7 @@ class GetRoverCuriosityPhotosRequest extends BaseJson {
   final String sol;
   @JsonKey(name: 'api_key')
   final String apiKey;
+
   GetRoverCuriosityPhotosRequest({
     required this.sol,
     required this.apiKey,

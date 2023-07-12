@@ -4,7 +4,6 @@ import '../../../models/models.dart';
 import 'model_cubit.dart';
 import 'model_data_state.dart';
 
-
 class ModelListCubitImpl<Model, Entity> extends ModelCubit<Model> {
   late final Stream<Entity?> _stream;
   StreamSubscription? subscription;

@@ -2,7 +2,6 @@ library core_sdk;
 
 import 'package:core_sdk/data/repositories/nasa_db.dart';
 
-import 'config/env_modes.dart';
 import 'data/config/network_config.dart';
 import 'data/network/nasa/nasa_network_impl.dart';
 import 'data/repositories/rover_photos_repository_impl.dart';

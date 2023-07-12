@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:styles/constants/style_dimens.dart';
 import 'package:styles/styles.dart';
-import 'package:styles/theme/theme_texts.dart';
 
 import 'init_complete.dart';
 
@@ -20,7 +19,7 @@ class InitStatusViewer extends StatelessWidget {
       bloc: InitManagerCubit.shared,
       listener: (context, state) {
         if (state.phase == InitPhase.completed) {
-          Future.delayed(Duration(seconds: 4), () {
+          Future.delayed(const Duration(seconds: 3), () {
             DashboardScreen.navigate(context, replace: true);
           });
         }

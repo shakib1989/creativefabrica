@@ -22,10 +22,10 @@ abstract class BaseGetIt {
   }
 
   void registerLazySingleton<T extends Object>(
-      FactoryFunc<T> factoryFunc, {
-        String? instanceName,
-        DisposingFunc<T>? dispose,
-      }) {
+    FactoryFunc<T> factoryFunc, {
+    String? instanceName,
+    DisposingFunc<T>? dispose,
+  }) {
     _getIt.registerLazySingleton<T>(
       factoryFunc,
       instanceName: instanceName,

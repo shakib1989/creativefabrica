@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:creativefabrica/assets/image_assets.dart';
 import 'package:creativefabrica/l10n/l10n.dart';
 import 'package:creativefabrica/src/constants/app_dimens.dart';
@@ -13,12 +14,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:styles/constants/exports.dart';
 import 'package:styles/styles.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 
 import '../../image/image_screen.dart';
 
 class RoverGallery extends StatefulWidget {
   final ScrollController controller;
+
   const RoverGallery({
     super.key,
     required this.controller,
@@ -132,7 +133,6 @@ class _RoverGalleryState extends State<RoverGallery> {
       crossAxisCount: count,
       itemCount: state.gallery.length,
       itemBuilder: (BuildContext context, int index) {
-        print('item builder $index');
         return GestureDetector(
           onTap: () {
             ImageScreen.navigate(

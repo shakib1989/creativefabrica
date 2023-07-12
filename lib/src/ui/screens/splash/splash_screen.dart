@@ -1,10 +1,6 @@
 import 'package:creativefabrica/assets/image_assets.dart';
-import 'package:creativefabrica/l10n/l10n.dart';
 import 'package:creativefabrica/src/app/init/exports.dart';
-import 'package:creativefabrica/src/constants/app_dimens.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:styles/constants/style_dimens.dart';
 import 'package:styles/styles.dart';
 
 import 'components/init_status_viewer.dart';
@@ -21,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late AnimationController addToCartPopUpAnimationController;
   ImageProvider logo = const AssetImage(ImageAssets.splashBackground);
+
   @override
   void initState() {
     super.initState();
@@ -41,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Screen(
       background: _buildBackground(),
-      body: Column(
+      body: const Column(
         children: [
           SplashTopArea(),
           Expanded(child: SizedBox.shrink()),

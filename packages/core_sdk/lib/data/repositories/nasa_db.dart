@@ -2,7 +2,6 @@ import 'package:isar/isar.dart';
 
 import 'entities/entities.dart';
 
-
 class NasaDB {
   static NasaDB? _instance;
 
@@ -26,7 +25,6 @@ class NasaDB {
   NasaDB._();
 
   Future<void> init() async {
-
     database = await Isar.open(
       [
         RoverPhotoEntitySchema,

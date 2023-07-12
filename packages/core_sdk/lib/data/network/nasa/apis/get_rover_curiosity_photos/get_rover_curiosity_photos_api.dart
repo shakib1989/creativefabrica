@@ -3,13 +3,16 @@ import 'dart:convert';
 import '../../default_imports.dart';
 
 part 'get_rover_curiosity_photos_api.g.dart';
+
 part 'get_rover_curiosity_photos_request.dart';
+
 part 'get_rover_curiosity_photos_response.dart';
 
 class GetRoverCuriosityPhotosApi extends BaseApiImpl<
     GetRoverCuriosityPhotosRequest,
     GetRoverCuriosityPhotosResponse> implements BaseApi<List<String>> {
   final NetworkConfig networkConfig;
+
   GetRoverCuriosityPhotosApi(this.networkConfig)
       : super(
           baseUrl: networkConfig.baseUrl,
@@ -44,10 +47,10 @@ class GetRoverCuriosityPhotosApi extends BaseApiImpl<
 
   @override
   GetRoverCuriosityPhotosResponse apiResponseFromJson(
-          Map<String, dynamic> json) {
+      Map<String, dynamic> json) {
     print('apiResponseFromJson');
     print(jsonEncode(json));
-   return  GetRoverCuriosityPhotosResponse.fromJson(json);
+    return GetRoverCuriosityPhotosResponse.fromJson(json);
   }
 
   @override

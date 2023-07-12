@@ -1,3 +1,1 @@
-enum EnvMode {
- dev, staging, production
-}
+enum EnvMode { dev, staging, production }

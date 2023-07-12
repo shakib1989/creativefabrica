@@ -1,6 +1,3 @@
-
-
-
 import '../../../models/models.dart';
 
 class ModelDataState<T> {
@@ -10,8 +7,9 @@ class ModelDataState<T> {
 }
 
 class InitialModelDataState<T> extends ModelDataState<T> {
-  InitialModelDataState(Optional<T> dataOption):super(dataOption);
+  InitialModelDataState(Optional<T> dataOption) : super(dataOption);
 }
+
 class ModelDataUpdatedState<T> extends ModelDataState<T> {
-  ModelDataUpdatedState(Optional<T> dataOption):super(dataOption);
+  ModelDataUpdatedState(Optional<T> dataOption) : super(dataOption);
 }

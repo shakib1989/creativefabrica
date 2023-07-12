@@ -17,14 +17,15 @@ class InternetUtils {
     return false;
   }
 
-  static Future<bool> showNoInternetConnectionDialog({bool cancelable = false}) async {
+  static Future<bool> showNoInternetConnectionDialog(
+      {bool cancelable = false}) async {
     return await showDialog<bool>(
           context: ContextHolder.currentContext,
           builder: (context) {
             return TurnOnInternetDialog(
               cancelable: cancelable,
               onRetry: () async {
-                if(await InternetUtils.isInternetConnected()){
+                if (await InternetUtils.isInternetConnected()) {
                   Navigator.of(context).pop<bool>(true);
                 }
               },

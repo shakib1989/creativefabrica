@@ -1,5 +1,3 @@
-
-
 import 'package:json_annotation/json_annotation.dart';
 
 import '../base/exports.dart';
@@ -8,7 +6,6 @@ part 'empty_request.g.dart';
 
 @JsonSerializable()
 class EmptyRequest extends BaseJson {
-
   EmptyRequest();
 
   @override

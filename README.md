@@ -6,6 +6,10 @@ Creative Fabrica Assessment
 
 ## Setup
 
+### Android Setup
+
+Make sure you have the latest android version 33 installed and the respective build tools
+
 ### Flutter Setup
 Please use flutter version 3.10.5 to build the application
 
@@ -24,4 +28,11 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6-all.zip
         "apiKey": "{api_key}"
     }
 }
+```
+
+
+## Build APK
+Build the APK via the command : 
+```
+flutter build apk -t lib/env/env_development.dart --debug 
 ```

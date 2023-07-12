@@ -3,10 +3,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:core_sdk/data/network/default_imports.dart';
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-
-import 'exports.dart';
 
 enum ApiRequestType { get, post, put, patch, delete }
 
@@ -82,7 +79,6 @@ abstract class BaseApiImpl<Request extends BaseJson,
     required Map<String, String> headers,
     required Request request,
   }) async {
-
     try {
       final response = await client.get(
         url,

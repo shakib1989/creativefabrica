@@ -34,7 +34,9 @@ class _TurnOnInternetDialogState extends State<TurnOnInternetDialog> {
             width: double.maxFinite,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.background,
-              borderRadius: BorderRadius.circular(StyleDimens.roundedCornerRadius,),
+              borderRadius: BorderRadius.circular(
+                StyleDimens.roundedCornerRadius,
+              ),
             ),
             margin: EdgeInsets.symmetric(
               horizontal: StyleDimens.screenEdgeWidthOffset,

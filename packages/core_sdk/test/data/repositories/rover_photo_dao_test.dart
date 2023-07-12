@@ -2,7 +2,6 @@ import 'package:core_sdk/core_sdk.dart';
 import 'package:core_sdk/data/config/network_config.dart';
 import 'package:core_sdk/data/network/default_imports.dart';
 import 'package:core_sdk/domain/nasa_get_it.dart';
-import 'package:core_sdk/data/repositories/nasa_db.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
