@@ -1,6 +1,6 @@
 
 
-abstract class AuthPrefKeys {
+abstract class NasaPrefKeys {
 
   static const String _prefix ="data_repo_auth_";
   static const String appAuth = '${_prefix}_app_auth';

@@ -3,4 +3,4 @@ import '../default_imports.dart';
 
 part 'mock_rover_curiosity_photos_response.dart';
 
-class MockAccountsResponse {}
+class MockNasaResponse {}

@@ -1,8 +1,7 @@
 part of 'mock_nasa_responses.dart';
 
-extension MockAccountBalanceResponse on MockAccountsResponse {
-  GetRoverCuriosityPhotosResponse accountBalance(
-      GetRoverCuriosityPhotosRequest request) {
+extension MockRoverPhotosResponse on MockNasaResponse {
+  GetRoverCuriosityPhotosResponse roverPhotos() {
     return GetRoverCuriosityPhotosResponse(
       photos: [
         RoverImageModel(

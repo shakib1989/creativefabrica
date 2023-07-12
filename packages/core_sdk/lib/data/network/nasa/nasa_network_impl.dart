@@ -7,6 +7,6 @@ class NasaNetworkImpl extends NasaNetwork {
   NasaNetworkImpl(this.networkConfig);
 
   @override
-  Future<Either<FailureModel, List<String>>> getRoverImages(int sol) =>
-      GetRoverCuriosityPhotosApi(networkConfig).call(sol);
+  Future<Either<FailureModel, List<String>>> getRoverImages() =>
+      GetRoverCuriosityPhotosApi(networkConfig).call();
 }

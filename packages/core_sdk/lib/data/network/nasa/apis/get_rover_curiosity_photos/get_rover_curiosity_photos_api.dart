@@ -12,22 +12,32 @@ class GetRoverCuriosityPhotosApi extends BaseApiImpl<
       : super(
           baseUrl: networkConfig.baseUrl,
           endpoint: NasaApiPaths.marsRoverCuriosityPhotos,
-          requestType: ApiRequestType.post,
+          requestType: ApiRequestType.get,
           useMock: networkConfig.useMock,
         );
 
-  Future<Either<FailureModel, List<String>>> call(int sol) async {
+  Future<Either<FailureModel, List<String>>> call() async {
     final result = await apiCall(
       GetRoverCuriosityPhotosRequest(
-        sol: sol,
-        apiKey: '',
+        sol: 1000,
+        apiKey: networkConfig.apiKey,
       ),
     );
     return result.fold((failure) {
       return Left(failure);
     }, (data) {
-      return Right([]);
+      return Right(_getImageListFromResponse(data));
     });
+  }
+
+  List<String> _getImageListFromResponse(
+    GetRoverCuriosityPhotosResponse response,
+  ) {
+    final list = <String>[];
+    for (var data in response.photos) {
+      list.add(data.imageUrl);
+    }
+    return list;
   }
 
   @override
@@ -39,6 +49,6 @@ class GetRoverCuriosityPhotosApi extends BaseApiImpl<
   Future<Either<FailureModel, GetRoverCuriosityPhotosResponse>> mock(
     GetRoverCuriosityPhotosRequest request,
   ) async {
-    return Right(MockAccountsResponse().accountBalance(request));
+    return Right(MockNasaResponse().roverPhotos());
   }
 }

@@ -4,5 +4,5 @@ import 'package:dartz/dartz.dart';
 import '../models/models.dart';
 
 abstract class NasaNetwork {
-  Future<Either<FailureModel, List<String>>> getRoverImages(int sol);
+  Future<Either<FailureModel, List<String>>> getRoverImages();
 }

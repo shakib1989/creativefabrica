@@ -1,9 +1,11 @@
 library core_sdk;
 
+import 'package:core_sdk/data/repositories/nasa_db.dart';
+
 import 'config/env_modes.dart';
 import 'data/config/network_config.dart';
 import 'data/network/nasa/nasa_network_impl.dart';
-import 'data/repositories/auth_repository_impl.dart';
+import 'data/repositories/rover_photos_repository_impl.dart';
 import 'domain/nasa_get_it.dart';
 import 'domain/networks/nasa_network.dart';
 import 'domain/repositories/rover_photos_repository.dart';
@@ -37,6 +39,7 @@ class CoreSdk {
 
   Future<void> init() async {
     NasaSdkGetIt.initialize();
+    await NasaDB.initialize();
     NasaSdkGetIt.shared.registerLazySingleton<NasaNetwork>(
       () => NasaNetworkImpl(
         networkConfig,
