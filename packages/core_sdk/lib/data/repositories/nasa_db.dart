@@ -1,4 +1,5 @@
 import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'entities/entities.dart';
 
@@ -25,11 +26,13 @@ class NasaDB {
   NasaDB._();
 
   Future<void> init() async {
-    database = await Isar.open(
+   // final dir = await getApplicationDocumentsDirectory();
+    database = await Isar.openSync(
       [
         RoverPhotoEntitySchema,
       ],
       name: 'rover_db',
+      //  directory: dir.path,
     );
   }
 }

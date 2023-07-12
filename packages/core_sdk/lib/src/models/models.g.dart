@@ -6,6 +6,15 @@ part of 'models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+FailureModel _$FailureModelFromJson(Map<String, dynamic> json) => FailureModel(
+      message: json['message'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$FailureModelToJson(FailureModel instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+    };
+
 ImageModel _$ImageModelFromJson(Map<String, dynamic> json) => ImageModel(
       id: json['id'] as String,
       fileType: json['fileType'] as String,
@@ -19,15 +28,6 @@ Map<String, dynamic> _$ImageModelToJson(ImageModel instance) =>
       'fileType': instance.fileType,
       'mimeType': instance.mimeType,
       'path': instance.path,
-    };
-
-FailureModel _$FailureModelFromJson(Map<String, dynamic> json) => FailureModel(
-      message: json['message'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$FailureModelToJson(FailureModel instance) =>
-    <String, dynamic>{
-      'message': instance.message,
     };
 
 TextIntValueModel _$TextIntValueModelFromJson(Map<String, dynamic> json) =>
