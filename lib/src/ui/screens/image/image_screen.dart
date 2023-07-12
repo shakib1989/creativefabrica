@@ -41,10 +41,12 @@ class ImageScreen extends StatelessWidget {
           child: const Icon(Icons.arrow_back_ios_new),
         ),
       ),
-      body: Column(
-        children: [
-          _buildHero(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _buildHero(),
+          ],
+        ),
       ),
     );
   }

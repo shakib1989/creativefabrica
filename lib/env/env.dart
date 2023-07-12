@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 
 import '../bootstrap.dart';
 import '../src/app/application.dart';
@@ -18,14 +19,15 @@ abstract class Env {
   Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
     Paint.enableDithering = true;
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     startApp();
   }
 
   Future<void> startApp() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    Paint.enableDithering = true;
     await Firebase.initializeApp();
-
     bootstrap(() => const Application());
   }
 }
