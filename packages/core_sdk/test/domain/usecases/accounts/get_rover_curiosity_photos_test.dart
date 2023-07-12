@@ -40,6 +40,7 @@ void main() {
     });
 
     test('Test Get User Account Portfolio Statistics Day', () async {
+      await GetRoverCuriosityPhotosUseCase().call();
       final list = await GetRoverCuriosityPhotosLocalUseCase().call();
       expect(
         list.length,

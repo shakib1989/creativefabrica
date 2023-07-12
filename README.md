@@ -30,6 +30,12 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.6-all.zip
 }
 ```
 
+##Run the Apk
+
+Make sure to set the dart entry point to the following in android studio:
+```
+{path_to_project_root}\lib\env\env_development.dart
+```
 
 ## Build APK
 Build the APK via the command : 
