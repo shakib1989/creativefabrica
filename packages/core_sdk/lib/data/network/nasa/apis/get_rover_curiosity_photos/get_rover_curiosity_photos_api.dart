@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../default_imports.dart';
 
 part 'get_rover_curiosity_photos_api.g.dart';
@@ -19,7 +21,7 @@ class GetRoverCuriosityPhotosApi extends BaseApiImpl<
   Future<Either<FailureModel, List<String>>> call() async {
     final result = await apiCall(
       GetRoverCuriosityPhotosRequest(
-        sol: 1000,
+        sol: 1000.toString(),
         apiKey: networkConfig.apiKey,
       ),
     );
@@ -42,8 +44,11 @@ class GetRoverCuriosityPhotosApi extends BaseApiImpl<
 
   @override
   GetRoverCuriosityPhotosResponse apiResponseFromJson(
-          Map<String, dynamic> json) =>
-      GetRoverCuriosityPhotosResponse.fromJson(json);
+          Map<String, dynamic> json) {
+    print('apiResponseFromJson');
+    print(jsonEncode(json));
+   return  GetRoverCuriosityPhotosResponse.fromJson(json);
+  }
 
   @override
   Future<Either<FailureModel, GetRoverCuriosityPhotosResponse>> mock(

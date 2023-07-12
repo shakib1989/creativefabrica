@@ -9,7 +9,7 @@ part of 'get_rover_curiosity_photos_api.dart';
 GetRoverCuriosityPhotosRequest _$GetRoverCuriosityPhotosRequestFromJson(
         Map<String, dynamic> json) =>
     GetRoverCuriosityPhotosRequest(
-      sol: json['sol'] as int,
+      sol: json['sol'] as String,
       apiKey: json['api_key'] as String,
     );
 

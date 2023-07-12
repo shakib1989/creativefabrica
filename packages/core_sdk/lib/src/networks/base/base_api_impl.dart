@@ -62,7 +62,7 @@ abstract class BaseApiImpl<Request extends BaseJson,
     log(request.toJson().toString());
     if (requestType == ApiRequestType.get) {
       return _makeGetCall(
-        url: Uri.parse(url),
+        url: url,
         headers: newHeaders,
         request: request,
       );
@@ -78,20 +78,22 @@ abstract class BaseApiImpl<Request extends BaseJson,
   }
 
   Future<Either<FailureModel, ApiResponse>> _makeGetCall({
-    required Uri url,
+    required String url,
     required Map<String, String> headers,
     required Request request,
   }) async {
+
     try {
       final response = await client.get(
-        url.toString(),
+        url,
         queryParameters: request.toJson(),
         options: Options(
           headers: headers,
         ),
       );
+
       print("\n\n\nresponse code = ${response.statusCode}");
-      final json = jsonDecode(response.data);
+      final json = response.data;
       log("\n\n\n${json.toString()}");
       if (isSuccess(response)) {
         return Right(apiResponseFromJson(response.data));

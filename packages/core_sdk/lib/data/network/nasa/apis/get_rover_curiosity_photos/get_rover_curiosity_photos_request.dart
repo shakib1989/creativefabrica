@@ -2,7 +2,7 @@ part of 'get_rover_curiosity_photos_api.dart';
 
 @JsonSerializable(explicitToJson: true)
 class GetRoverCuriosityPhotosRequest extends BaseJson {
-  final int sol;
+  final String sol;
   @JsonKey(name: 'api_key')
   final String apiKey;
   GetRoverCuriosityPhotosRequest({

@@ -38,8 +38,8 @@ class CoreSdk {
   CoreSdk._({required this.networkConfig});
 
   Future<void> init() async {
-    NasaSdkGetIt.initialize();
     await NasaDB.initialize();
+    NasaSdkGetIt.initialize();
     NasaSdkGetIt.shared.registerLazySingleton<NasaNetwork>(
       () => NasaNetworkImpl(
         networkConfig,
