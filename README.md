@@ -15,4 +15,13 @@ This could be done by updating the following variable in android/gradle/wrapper/
 
 distributionUrl=https\://services.gradle.org/distributions/gradle-7.6-all.zip
 
-
+### Environment Setup
+1. Create a a env.json file in {project_root_location}/assets/env 
+2. The env.json file should contain the following json. Please make sure to update the value of all the required information wrapped by { }
+```
+{
+    "nasa":{
+        "apiKey": "{api_key}"
+    }
+}
+```

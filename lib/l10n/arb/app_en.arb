@@ -7,57 +7,21 @@
     },
     "appName":"Creative Fabrica",
 
-    "authCodeHeading":"Code has been sent to {phoneNumber}",
-    "@authCodeHeading": {
-        "placeholders": {
-            "phoneNumber": {
-                "type": "String"
-            }
-        }
-    },
-
-    "buyingPower":"Buying Power",
-    "buyingPowerDetails":"Lorem ipsum dolor sit amet consectetur. Amet ullamcorper cras egestas congue non.",
-    "accountDashboardAccountNumber": "Account - *****{lastDigits}",
-    "accountDashboardBuyingPowerDetails": "Afford to purchase a greater quantity",
-    "@accountDashboardAccountNumber": {
-        "placeholders": {
-            "lastDigits": {
-                "type": "String"
-            }
-        }
-    },
+    "dashboardPleaseRefreshTryAgain":"Please press refresh to reload try again",
+    "dashboardOldData":"Old Data is being shown. Please turn on internet and press refresh button for latest results.",
 
 
-    "accountDashboardFundTransferDetails": "Lorem ipsum dolor sit amet consectetur.",
-    "accountDashboardOtherBOAccountDetails": "Afford to purchase a greater quantity",
-    "accountDashboardBuySellDetails": "Afford to purchase a greater quantity",
+    "initCompleted": "Initializing Completed",
+    "initPleaseWait": "Initializing please wait...",
+    "imageViewTitle": "Image",
 
-
-
-    "accountDashboardAccountBalance": "BDT {balance}",
-    "@accountDashboardAccountBalance": {
-        "placeholders": {
-            "balance": {
-                "type": "String"
-            }
-        }
-    },
     "appInitializing": "App Initializing...",
-    "accounts": "Accounts",
-    "clear": "Clear",
-    "discoverMore": "Discover More",
-    "noNotificationsAvailable": "No Notifications Available",
-    "buySell": "Buy Sell",
-    "fundTransfer": "Fund Transfer",
-    "otherBOAccount": "Other BO Account",
-    "newNotification": "New Notification",
-    "notification1": "Lorem ipsum dolor sit amet consectetur. Venenatis sodales cras lobortis porta .",
-    "notification2": "Vitae at nisi amet at adipiscing ullamcorper velit rhoncus diam.",
-    "portfolioValue": "Portfolio Value",
-    "productTitle": "PRODUCT",
-    "tapToViewBalance": "Tap to view balance",
-    "typeTitle": "TYPE"
-
-
+    "anonymousLoginDisabled":"Anonymous auth hasn't been enabled for this project.",
+    "cancel":"Cancel",
+    "continueNext":"Continue",
+    "noInternet":"No Internet",
+    "noInternetConnection":"No Internet. Please connect Internet to continue.",
+    "retry":"Retry",
+    "turnOnInternet":"Please connect to the Internet to continue.",
+    "unknownError":"An unknown error has occurred"
 }
